@@ -21,6 +21,7 @@ struct SignUpView: View {
           VStack(alignment: .leading){
             Text("Username").foregroundColor(Color.white)
             TextField("Your Username", text: $userName).foregroundColor(Color.white).padding().frame(width: 300, height: 50).background(Color("TextFieldBackground")).cornerRadius(10)
+              
           }
           
           VStack(alignment: .leading){

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AFCEB55F29AFF20100D8E85A /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCEB55E29AFF20100D8E85A /* UserProfileView.swift */; };
 		CAFC2AD129A5715900C9C7A5 /* MovieRecsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC2AD029A5715900C9C7A5 /* MovieRecsApp.swift */; };
 		CAFC2AD329A5715900C9C7A5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC2AD229A5715900C9C7A5 /* ContentView.swift */; };
 		CAFC2AD529A5715B00C9C7A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAFC2AD429A5715B00C9C7A5 /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AFCEB55E29AFF20100D8E85A /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		CAFC2ACD29A5715900C9C7A5 /* MovieRecs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieRecs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAFC2AD029A5715900C9C7A5 /* MovieRecsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRecsApp.swift; sourceTree = "<group>"; };
 		CAFC2AD229A5715900C9C7A5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				CAFC2AE729A5721900C9C7A5 /* TierListView.swift */,
 				CAFC2AD229A5715900C9C7A5 /* ContentView.swift */,
 				CAFC2AE529A571F200C9C7A5 /* LoginView.swift */,
+				AFCEB55E29AFF20100D8E85A /* UserProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 				CAFC2AEC29A5725400C9C7A5 /* Movie.swift in Sources */,
 				CAFC2AD329A5715900C9C7A5 /* ContentView.swift in Sources */,
 				CAFC2AD129A5715900C9C7A5 /* MovieRecsApp.swift in Sources */,
+				AFCEB55F29AFF20100D8E85A /* UserProfileView.swift in Sources */,
 				CAFC2AEA29A5723E00C9C7A5 /* User.swift in Sources */,
 				CAFC2AE829A5721900C9C7A5 /* TierListView.swift in Sources */,
 				CAFC2ADD29A5715B00C9C7A5 /* MovieRecs.xcdatamodeld in Sources */,
