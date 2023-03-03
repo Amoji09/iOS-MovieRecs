@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		97B5F77A29AD37C4009AE83E /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B5F77929AD37C4009AE83E /* SignUpView.swift */; };
+		97B5F77C29AD37E5009AE83E /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B5F77B29AD37E5009AE83E /* SignInView.swift */; };
 		CAFC2AD129A5715900C9C7A5 /* MovieRecsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC2AD029A5715900C9C7A5 /* MovieRecsApp.swift */; };
 		CAFC2AD329A5715900C9C7A5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC2AD229A5715900C9C7A5 /* ContentView.swift */; };
 		CAFC2AD529A5715B00C9C7A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAFC2AD429A5715B00C9C7A5 /* Assets.xcassets */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		97B5F77929AD37C4009AE83E /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		97B5F77B29AD37E5009AE83E /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		CAFC2ACD29A5715900C9C7A5 /* MovieRecs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieRecs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAFC2AD029A5715900C9C7A5 /* MovieRecsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRecsApp.swift; sourceTree = "<group>"; };
 		CAFC2AD229A5715900C9C7A5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -100,6 +104,8 @@
 				CAFC2AE929A5723E00C9C7A5 /* User.swift */,
 				CAFC2AEB29A5725400C9C7A5 /* Movie.swift */,
 				CAFC2AE329A5717B00C9C7A5 /* API.swift */,
+				97B5F77929AD37C4009AE83E /* SignUpView.swift */,
+				97B5F77B29AD37E5009AE83E /* SignInView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -180,8 +186,10 @@
 				CAFC2AD329A5715900C9C7A5 /* ContentView.swift in Sources */,
 				CAFC2AD129A5715900C9C7A5 /* MovieRecsApp.swift in Sources */,
 				CAFC2AEA29A5723E00C9C7A5 /* User.swift in Sources */,
+				97B5F77A29AD37C4009AE83E /* SignUpView.swift in Sources */,
 				CAFC2AE829A5721900C9C7A5 /* TierListView.swift in Sources */,
 				CAFC2ADD29A5715B00C9C7A5 /* MovieRecs.xcdatamodeld in Sources */,
+				97B5F77C29AD37E5009AE83E /* SignInView.swift in Sources */,
 				CAFC2AE429A5717B00C9C7A5 /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
