@@ -1,33 +1,24 @@
 import SwiftUI
 import CoreData
 
+
 struct ContentView: View {
   @StateObject var api = APIModel()
   @State var query = ""
   @State var movieTitle = "Default"
   @State var movieResults : [TMDBMovie] = []
-    var body: some View{
-      VStack{
-        HStack{
-          TextField("Movie Title", text: $query)
-          Button(action:{
-            if query.count > 0{
-              api.loadMovie(movieName: query)
+  @ObservedObject var flow = AppFlow()
+    var body : some View {
+        ZStack{
+            if (flow.loggedIn) {
+                Text("Home")
+            } else if (!flow.loggedIn && flow.hasAccount ) {
+                SignInView(flow : flow)
+            } else if (!flow.loggedIn){
+                SignUpView(flow : flow)
             }
-          }){
-            Text("Search")
-          }
-        }
-        if let movieResponse = api.apiResponse{
-          List {
-            ForEach(movieResponse.results) { movie in
-              MovieResultView(movie: movie)
-            }
-          }
-        }
-      
-      }
-    }
+            
+        }}
   }
 
 struct MovieResultView : View{
