@@ -2,10 +2,12 @@ import SwiftUI
 
 struct TierListView: View {
   //var data = ["S", "A", "B", "C", "D", "E", "F"]
+  @ObservedObject var flow : AppFlow
   var body: some View {
     NavigationView {
       ZStack{
-        Color.black.ignoresSafeArea()
+        Color("LoginBackground")
+            .ignoresSafeArea()
         VStack {
           //ForEach(data,id: \.self){ data in
           //Color.red
@@ -38,11 +40,9 @@ struct SearchView: View {
   @State var query = ""
   @State var movieTitle = "Default"
   @State var movieResults : [TMDBMovie] = []
+  
   var body: some View{
       VStack{
-          ForEach(movieResults) { movie in
-              MovieResultView(movie: movie)
-          }
           HStack{
               TextField("Movie Title", text: $query)
               Button(action:{
@@ -55,7 +55,12 @@ struct SearchView: View {
               }){
                   Text("Search")
               }
+          }.padding()
+        List{
+          ForEach(movieResults) { movie in
+            MovieResultView(movie: movie)
           }
+        }
       }
   }
 }
@@ -89,7 +94,7 @@ struct TierView: View {
 
 struct TierListView_Previews: PreviewProvider {
   static var previews: some View {
-    TierListView()
+    TierListView(flow: AppFlow())
   }
 }
 

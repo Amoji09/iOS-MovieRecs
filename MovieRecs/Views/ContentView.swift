@@ -3,24 +3,36 @@ import CoreData
 
 
 struct ContentView: View {
-  @StateObject var api = APIModel()
-  @State var query = ""
-  @State var movieTitle = "Default"
-  @State var movieResults : [TMDBMovie] = []
   @ObservedObject var flow = AppFlow()
     var body : some View {
         ZStack{
             if (flow.loggedIn) {
-                Text("Home")
+              MainView(flow: flow)
             } else if (!flow.loggedIn && flow.hasAccount ) {
                 SignInView(flow : flow)
             } else if (!flow.loggedIn){
                 SignUpView(flow : flow)
             }
             
-        }}
+        }
   }
 }
+
+struct MainView : View {
+  @ObservedObject var flow : AppFlow
+  var body : some View{
+    TabView {
+      TierListView(flow: flow).tabItem{
+        Label("Tiers", systemImage: "house")
+      }
+      UserProfile(flow : flow).tabItem{
+        Label("User", systemImage: "house")
+        
+      }
+    }
+  }
+}
+
 
 struct MovieResultView : View{
     let movie : TMDBMovie

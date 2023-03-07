@@ -11,6 +11,8 @@ struct UserProfile: View {
     @State var name: String = ""
     @State var username: String = ""
     @State var email: String = ""
+  @ObservedObject var flow : AppFlow
+  
     var body: some View {
         ZStack{
             Color("LoginBackground")
@@ -47,6 +49,7 @@ struct UserProfile: View {
                 Spacer()
                 
                 Button {
+                  flow.loggedIn = false
                 } label: {
                     Text("Log Out")
                         .padding(10)
@@ -63,7 +66,7 @@ struct UserProfile: View {
     
     struct UserProfile_Previews: PreviewProvider {
         static var previews: some View {
-            UserProfile()
+          UserProfile(flow : AppFlow())
         }
     }
 }
