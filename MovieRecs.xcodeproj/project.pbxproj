@@ -20,6 +20,7 @@
 		CAFC2AE829A5721900C9C7A5 /* TierListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC2AE729A5721900C9C7A5 /* TierListView.swift */; };
 		CAFC2AEA29A5723E00C9C7A5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC2AE929A5723E00C9C7A5 /* User.swift */; };
 		CAFC2AEC29A5725400C9C7A5 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC2AEB29A5725400C9C7A5 /* Movie.swift */; };
+		E87A7AB629AE745D00AC0BA5 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87A7AB529AE745D00AC0BA5 /* UserProfile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		CAFC2AE729A5721900C9C7A5 /* TierListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TierListView.swift; sourceTree = "<group>"; };
 		CAFC2AE929A5723E00C9C7A5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CAFC2AEB29A5725400C9C7A5 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		E87A7AB529AE745D00AC0BA5 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				CAFC2AD229A5715900C9C7A5 /* ContentView.swift */,
 				CAFC2AE529A571F200C9C7A5 /* SigninView.swift */,
 				AA4C997229AEBBAF002A4438 /* SignupView.swift */,
+				E87A7AB529AE745D00AC0BA5 /* UserProfile.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 			files = (
 				CAFC2AE629A571F200C9C7A5 /* SigninView.swift in Sources */,
 				CAFC2ADA29A5715B00C9C7A5 /* Persistence.swift in Sources */,
+				E87A7AB629AE745D00AC0BA5 /* UserProfile.swift in Sources */,
 				CAFC2AEC29A5725400C9C7A5 /* Movie.swift in Sources */,
 				AA4C997129AEBA62002A4438 /* AppFlow.swift in Sources */,
 				CAFC2AD329A5715900C9C7A5 /* ContentView.swift in Sources */,

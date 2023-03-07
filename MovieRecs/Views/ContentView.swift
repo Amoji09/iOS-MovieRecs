@@ -20,15 +20,16 @@ struct ContentView: View {
             
         }}
   }
+}
 
 struct MovieResultView : View{
-  let movie : TMDBMovie
-  
-  var body : some View {
-    VStack{
-      Text(movie.title)
+    let movie : TMDBMovie
+    
+    var body : some View {
+        VStack{
+            Text(movie.title)
+        }
     }
-  }
 }
 
 
