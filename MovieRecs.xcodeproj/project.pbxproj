@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		AA4C997129AEBA62002A4438 /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4C997029AEBA62002A4438 /* AppFlow.swift */; };
 		AA4C997329AEBBAF002A4438 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4C997229AEBBAF002A4438 /* SignupView.swift */; };
+		CA550CBA29B7F61C002D41D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA550CB929B7F61C002D41D9 /* GoogleService-Info.plist */; };
+		CA550CBD29B7F727002D41D9 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CA550CBC29B7F727002D41D9 /* FirebaseAuth */; };
+		CA550CBF29B7F727002D41D9 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CA550CBE29B7F727002D41D9 /* FirebaseFirestore */; };
+		CA550CC129B7F727002D41D9 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CA550CC029B7F727002D41D9 /* FirebaseFirestoreSwift */; };
+		CA550CC329B7F727002D41D9 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = CA550CC229B7F727002D41D9 /* FirebaseFunctions */; };
 		CAFC2AD129A5715900C9C7A5 /* MovieRecsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC2AD029A5715900C9C7A5 /* MovieRecsApp.swift */; };
 		CAFC2AD329A5715900C9C7A5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC2AD229A5715900C9C7A5 /* ContentView.swift */; };
 		CAFC2AD529A5715B00C9C7A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAFC2AD429A5715B00C9C7A5 /* Assets.xcassets */; };
@@ -26,6 +31,7 @@
 /* Begin PBXFileReference section */
 		AA4C997029AEBA62002A4438 /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
 		AA4C997229AEBBAF002A4438 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		CA550CB929B7F61C002D41D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CAFC2ACD29A5715900C9C7A5 /* MovieRecs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieRecs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAFC2AD029A5715900C9C7A5 /* MovieRecsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRecsApp.swift; sourceTree = "<group>"; };
 		CAFC2AD229A5715900C9C7A5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -46,6 +52,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA550CBD29B7F727002D41D9 /* FirebaseAuth in Frameworks */,
+				CA550CBF29B7F727002D41D9 /* FirebaseFirestore in Frameworks */,
+				CA550CC129B7F727002D41D9 /* FirebaseFirestoreSwift in Frameworks */,
+				CA550CC329B7F727002D41D9 /* FirebaseFunctions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +81,7 @@
 		CAFC2ACF29A5715900C9C7A5 /* MovieRecs */ = {
 			isa = PBXGroup;
 			children = (
+				CA550CB929B7F61C002D41D9 /* GoogleService-Info.plist */,
 				CAFC2AD029A5715900C9C7A5 /* MovieRecsApp.swift */,
 				CAFC2AED29A5726300C9C7A5 /* Views */,
 				CAFC2AEE29A5727600C9C7A5 /* Model */,
@@ -129,6 +140,12 @@
 			dependencies = (
 			);
 			name = MovieRecs;
+			packageProductDependencies = (
+				CA550CBC29B7F727002D41D9 /* FirebaseAuth */,
+				CA550CBE29B7F727002D41D9 /* FirebaseFirestore */,
+				CA550CC029B7F727002D41D9 /* FirebaseFirestoreSwift */,
+				CA550CC229B7F727002D41D9 /* FirebaseFunctions */,
+			);
 			productName = MovieRecs;
 			productReference = CAFC2ACD29A5715900C9C7A5 /* MovieRecs.app */;
 			productType = "com.apple.product-type.application";
@@ -157,6 +174,9 @@
 				Base,
 			);
 			mainGroup = CAFC2AC429A5715900C9C7A5;
+			packageReferences = (
+				CA550CBB29B7F726002D41D9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = CAFC2ACE29A5715900C9C7A5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -172,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAFC2AD829A5715B00C9C7A5 /* Preview Assets.xcassets in Resources */,
+				CA550CBA29B7F61C002D41D9 /* GoogleService-Info.plist in Resources */,
 				CAFC2AD529A5715B00C9C7A5 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -395,6 +416,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CA550CBB29B7F726002D41D9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CA550CBC29B7F727002D41D9 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CA550CBB29B7F726002D41D9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		CA550CBE29B7F727002D41D9 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CA550CBB29B7F726002D41D9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		CA550CC029B7F727002D41D9 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CA550CBB29B7F726002D41D9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		CA550CC229B7F727002D41D9 /* FirebaseFunctions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CA550CBB29B7F726002D41D9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFunctions;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		CAFC2ADB29A5715B00C9C7A5 /* MovieRecs.xcdatamodeld */ = {
