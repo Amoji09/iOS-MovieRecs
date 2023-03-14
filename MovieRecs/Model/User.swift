@@ -13,6 +13,9 @@ class User {
     let username: String
     let password: String
     let movies: [Movie]
+  
+  
+  
     
     init (email: String, username: String, password: String, movies: [Movie]) {
         self.email = email

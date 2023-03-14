@@ -26,11 +26,11 @@ struct MainView : View {
         Label("Tiers", systemImage: "house")
       }
       UserProfile(flow : flow).tabItem{
-        Label("User", systemImage: "house")
+        Label("User", systemImage: "person.fill")
         
       }
       DataBaseView().tabItem{
-        Label("User", systemImage: "house")
+        Label("DatabaseTest", systemImage: "list.dash.header.rectangle")
       }
       
     }
