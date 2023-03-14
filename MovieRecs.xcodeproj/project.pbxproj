@@ -14,6 +14,8 @@
 		CA550CBF29B7F727002D41D9 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CA550CBE29B7F727002D41D9 /* FirebaseFirestore */; };
 		CA550CC129B7F727002D41D9 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CA550CC029B7F727002D41D9 /* FirebaseFirestoreSwift */; };
 		CA550CC329B7F727002D41D9 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = CA550CC229B7F727002D41D9 /* FirebaseFunctions */; };
+		CA550CC629B7F8B2002D41D9 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA550CC529B7F8B2002D41D9 /* Database.swift */; };
+		CA550CC829B7F977002D41D9 /* DataBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA550CC729B7F977002D41D9 /* DataBaseView.swift */; };
 		CAFC2AD129A5715900C9C7A5 /* MovieRecsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC2AD029A5715900C9C7A5 /* MovieRecsApp.swift */; };
 		CAFC2AD329A5715900C9C7A5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAFC2AD229A5715900C9C7A5 /* ContentView.swift */; };
 		CAFC2AD529A5715B00C9C7A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAFC2AD429A5715B00C9C7A5 /* Assets.xcassets */; };
@@ -32,6 +34,8 @@
 		AA4C997029AEBA62002A4438 /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
 		AA4C997229AEBBAF002A4438 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		CA550CB929B7F61C002D41D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CA550CC529B7F8B2002D41D9 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		CA550CC729B7F977002D41D9 /* DataBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseView.swift; sourceTree = "<group>"; };
 		CAFC2ACD29A5715900C9C7A5 /* MovieRecs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieRecs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAFC2AD029A5715900C9C7A5 /* MovieRecsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRecsApp.swift; sourceTree = "<group>"; };
 		CAFC2AD229A5715900C9C7A5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -62,6 +66,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA550CC429B7F89B002D41D9 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				CA550CC529B7F8B2002D41D9 /* Database.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
 		CAFC2AC429A5715900C9C7A5 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +93,7 @@
 		CAFC2ACF29A5715900C9C7A5 /* MovieRecs */ = {
 			isa = PBXGroup;
 			children = (
+				CA550CC429B7F89B002D41D9 /* Firebase */,
 				CA550CB929B7F61C002D41D9 /* GoogleService-Info.plist */,
 				CAFC2AD029A5715900C9C7A5 /* MovieRecsApp.swift */,
 				CAFC2AED29A5726300C9C7A5 /* Views */,
@@ -109,6 +122,7 @@
 				CAFC2AE529A571F200C9C7A5 /* SigninView.swift */,
 				AA4C997229AEBBAF002A4438 /* SignupView.swift */,
 				E87A7AB529AE745D00AC0BA5 /* UserProfile.swift */,
+				CA550CC729B7F977002D41D9 /* DataBaseView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -209,12 +223,14 @@
 				E87A7AB629AE745D00AC0BA5 /* UserProfile.swift in Sources */,
 				CAFC2AEC29A5725400C9C7A5 /* Movie.swift in Sources */,
 				AA4C997129AEBA62002A4438 /* AppFlow.swift in Sources */,
+				CA550CC829B7F977002D41D9 /* DataBaseView.swift in Sources */,
 				CAFC2AD329A5715900C9C7A5 /* ContentView.swift in Sources */,
 				CAFC2AD129A5715900C9C7A5 /* MovieRecsApp.swift in Sources */,
 				CAFC2AEA29A5723E00C9C7A5 /* User.swift in Sources */,
 				CAFC2AE829A5721900C9C7A5 /* TierListView.swift in Sources */,
 				CAFC2ADD29A5715B00C9C7A5 /* MovieRecs.xcdatamodeld in Sources */,
 				AA4C997329AEBBAF002A4438 /* SignupView.swift in Sources */,
+				CA550CC629B7F8B2002D41D9 /* Database.swift in Sources */,
 				CAFC2AE429A5717B00C9C7A5 /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
