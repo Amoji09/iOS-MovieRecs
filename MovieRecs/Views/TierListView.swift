@@ -42,25 +42,30 @@ struct SearchView: View {
   @State var movieResults : [TMDBMovie] = []
   
   var body: some View{
-      VStack{
-          HStack{
-              TextField("Movie Title", text: $query)
-              Button(action:{
-                  if (query.count > 0){
-                      print("Call api")
-                      api.fetchFilms(movieName: query, completionHandler: {(films) in
-                          self.movieResults = films
-                      })
+      NavigationView{
+          VStack{
+              HStack{
+                  TextField("Movie Title", text: $query)
+                  Button(action:{
+                      if (query.count > 0){
+                          print("Call api")
+                          api.fetchFilms(movieName: query, completionHandler: {(films) in
+                              self.movieResults = films
+                          })
+                      }
+                  }){
+                      Text("Search")
                   }
-              }){
-                  Text("Search")
+              }.padding()
+              List{
+                  ForEach(movieResults) { movie in
+                      NavigationLink(destination:MovieResultView(movie: movie) ) {
+                          Text(movie.title)
+                      }
+                      
+                  }
               }
-          }.padding()
-        List{
-          ForEach(movieResults) { movie in
-            MovieResultView(movie: movie)
           }
-        }
       }
   }
 }
@@ -79,10 +84,10 @@ struct TierView: View {
     HStack{
       //Color.red
       Spacer(minLength: 40)
-      RoundedRectangle(cornerRadius: 12)
-        .fill(color)
-        .frame(width: 100, height: 100)
-        .overlay(Text(tierType).font(.largeTitle))
+        RoundedRectangle(cornerRadius: 12)
+                .fill(color)
+                .frame(width: 100, height: 100)
+                .overlay(Text(tierType).font(.largeTitle))
       Spacer(minLength: 6)
       RoundedRectangle(cornerRadius: 12)
         .fill(Color(red: 28/255, green: 39/255, blue: 52/255))
