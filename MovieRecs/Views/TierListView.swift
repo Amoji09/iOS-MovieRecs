@@ -40,11 +40,20 @@ struct SearchView: View {
   @State var query = ""
   @State var movieTitle = "Default"
   @State var movieResults : [TMDBMovie] = []
-  
+@State var popmovieResults : [TMDBMovie] = []
+    func generatePop() {
+            print("Call popular movie api")
+            api.fetchPopularFilms(completionHandler: {(films) in
+                self.popmovieResults = films
+            })
+    }
+    let backgroundGradient = LinearGradient(colors: [Color(red: 118/255, green: 16/255, blue: 35/255), Color.black], startPoint: .top, endPoint: .bottomLeading)
+   
   var body: some View{
+      let _ = generatePop()
       VStack{
           HStack{
-              TextField("Movie Title", text: $query)
+              TextField("Search for a movie", text: $query).frame(width: 250.0, height: 45.0).background(Color.black).cornerRadius(7).foregroundColor(Color.white).accentColor(Color.white)
               Button(action:{
                   if (query.count > 0){
                       print("Call api")
@@ -53,15 +62,22 @@ struct SearchView: View {
                       })
                   }
               }){
-                  Text("Search")
+                  Image(systemName: "magnifyingglass").foregroundColor(Color.white)
               }
           }.padding()
+          
+          List{
+            ForEach(popmovieResults) { movie in
+              MovieResultView(movie: movie)
+            }
+          }
         List{
           ForEach(movieResults) { movie in
             MovieResultView(movie: movie)
           }
         }
       }
+      .background(backgroundGradient)
   }
 }
 //struct TierView: View {
@@ -95,6 +111,7 @@ struct TierView: View {
 struct TierListView_Previews: PreviewProvider {
   static var previews: some View {
     TierListView(flow: AppFlow())
+
   }
 }
 

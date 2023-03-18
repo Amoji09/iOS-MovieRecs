@@ -39,12 +39,40 @@ class APIModel: ObservableObject {
                     completionHandler(decodedResponse.results)
                 } catch {
                     print("error: ", error)
-                } 
+                }
             }
         })
         task.resume()
     }
+    func fetchPopularFilms(completionHandler: @escaping ([TMDBMovie]) -> Void){
+        let url = URL(string: "https://api.themoviedb.org/3/movie/popular?api_key=368a7896ffc986e82822a2f2dc5cf33e&language=en-US&page=1")!
+        let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+            if let error = error {
+                print("Error with fetching popular films: \(error)")
+                return
+            }
+            guard let httpResponse = response as? HTTPURLResponse,
+                  (200...299).contains(httpResponse.statusCode) else {
+                print("Error with the response, unexpected status code: \(response)")
+                return
+            }
+            if let data = data {
+                do {
+                    let decodedResponse = try JSONDecoder().decode(TMDBResponse.self, from: data)
+                    print(decodedResponse.total_results)
+                    completionHandler(decodedResponse.results)
+                } catch {
+                    print("error: ", error)
+                }
+            }
+            
+        })
+        task.resume()
+    }
+    
 }
+
+
 struct TMDBResponse : Codable {
     let page : Int
     let results : [TMDBMovie]
