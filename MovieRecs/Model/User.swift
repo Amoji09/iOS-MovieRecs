@@ -7,20 +7,26 @@
 
 import Foundation
 
-class User {
+class UserModel {
+
     
+      func addMovie(tier: String, movie: TMDBMovie, user: User) {
+        // go into the movies dictionary
+        // append TMDBMovie to corresponding value field of dic by tier
+        if let user.names[tier] {
+            user.names[tier].append(movie)
+        }
+        
+    }
+}
+
+struct User : Codable {
     let email: String
     let username: String
     let password: String
-    let movies: [Movie]
-  
-  
-  
+    // create a names dictionary
+    // String tier is  key
+    // Array [TMDBMovie] is value
+    var names: [String : [TMDBMovie]]
     
-    init (email: String, username: String, password: String, movies: [Movie]) {
-        self.email = email
-        self.username = username
-        self.password = password
-        self.movies = movies
-    }
 }
