@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import Firebase
 
 
 struct SignInView: View {
-  @State var userName: String = ""
+  @State var email: String = ""
   @State var password: String = ""
     @State var showErorrMessege = false
   @ObservedObject var flow = AppFlow()
@@ -22,8 +23,8 @@ struct SignInView: View {
         VStack(alignment: .leading, spacing: 60){
           Text("Login").font(.largeTitle).foregroundColor(Color.white)
           VStack(alignment: .leading){
-            Text("Username").foregroundColor(Color.white)
-            TextField("Your Username", text: $userName).foregroundColor(Color.white).padding().frame(width: 300, height: 50).background(Color("TextFieldBackground")).cornerRadius(10)
+            Text("Email").foregroundColor(Color.white)
+            TextField("Your Username", text: $email).foregroundColor(Color.white).padding().frame(width: 300, height: 50).background(Color("TextFieldBackground")).cornerRadius(10)
           }
           
           VStack(alignment: .leading){
@@ -31,7 +32,7 @@ struct SignInView: View {
             TextField("", text: $password).foregroundColor(Color.white).padding().frame(width: 300, height: 50).background(Color("TextFieldBackground")).cornerRadius(10)
           }
           
-          Button{flow.loggedIn = true} label:{
+            Button{login();flow.loggedIn = true} label:{
             
             Text("LOGIN").frame(width: 300, height: 60).foregroundColor(Color.white).font(.title).background(LinearGradient(gradient: Gradient(colors: [.purple, .red]), startPoint: .leading, endPoint: .trailing).cornerRadius(40)
             )
@@ -42,7 +43,7 @@ struct SignInView: View {
               Button(action: {
                   //if the textfield is empty
                   //prints out error messege
-                  if(self.userName == "") {
+                  if(self.email == "") {
                       showErorrMessege = true
                   }
                   if(self.password == "") {
@@ -58,5 +59,12 @@ struct SignInView: View {
       }
     }
   }
+    func login() {
+        Auth.auth().signIn(withEmail: self.email, password: self.password) { result, error in
+        if error != nil {
+            print(error!.localizedDescription)
+        }
+        }
+    }
 }
 

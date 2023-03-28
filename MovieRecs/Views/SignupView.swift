@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Firebase
 
 struct SignUpView: View {
   @State var userName: String = ""
@@ -34,7 +35,7 @@ struct SignUpView: View {
             TextField("", text: $email).foregroundColor(Color.white).padding().frame(width: 300, height: 50).background(Color("TextFieldBackground")).cornerRadius(10)
           }
           
-            Button{flow.loggedIn = true} label:{
+            Button{register();flow.loggedIn = true} label:{
             
             Text("SIGN UP").frame(width: 300, height: 60).foregroundColor(Color.white).font(.title).background(LinearGradient(gradient: Gradient(colors: [.purple, .red]), startPoint: .leading, endPoint: .trailing).cornerRadius(40)
             )
@@ -53,6 +54,14 @@ struct SignUpView: View {
       }
     }
   }
+    func register() {
+        Auth.auth().createUser(withEmail: self.email, password: self.password) { result, error in
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+            
+        }
+    }
 }
 
 
