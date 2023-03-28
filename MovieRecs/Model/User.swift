@@ -12,12 +12,19 @@ class User {
     var email: String
     var username: String
     var password: String
-    var movies: [Movie]
+  var movies: [String:[TMDBMovie]]
   
-  
+    func addMovie(tier: String, movie: TMDBMovie) {
+          // go into the movies dictionary
+          // append TMDBMovie to corresponding value field of dic by tier
+      print(tier)
+      print(movie)
+      movies[tier]!.append(movie)
+      print(movies)
+      }
   
     
-    init (email: String, username: String, password: String, movies: [Movie]) {
+  init (email: String, username: String, password: String, movies: [String:[TMDBMovie]]) {
         self.email = email
         self.username = username
         self.password = password
