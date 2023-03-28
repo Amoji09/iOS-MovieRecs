@@ -34,17 +34,22 @@ struct UserProfile: View {
                     .shadow(color: .white, radius: 7)
                     .aspectRatio(contentMode: .fit)
                     
-                
-                Text("FName LName")
-                    .padding(5)
-                    .font(.title)
-                    .foregroundColor(Color.white)
-                
-                
-                Text("Username:").padding(5)
-                    .font(.title2).foregroundColor(Color.white)
+//              HStack{
+//
+//                Text("Username:").padding(5)
+//                  .font(.title2).foregroundColor(Color.white)
+//                Spacer()
+//                Text(flow.user.username).padding(5)
+//                  .font(.title2).foregroundColor(Color.white)
+//              }.padding()
+              
+              HStack{
                 
                 Text("Email:").font(.title2).foregroundColor(Color.white)
+                Spacer()
+                Text(flow.user.email).font(.title2).foregroundColor(Color.white)
+              }.padding()
+                
                 
                 Spacer()
                 

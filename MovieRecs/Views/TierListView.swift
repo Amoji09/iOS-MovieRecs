@@ -58,7 +58,9 @@ struct SearchView: View {
           }.padding()
         List{
           ForEach(movieResults) { movie in
-            MovieResultView(movie: movie)
+            NavigationLink(destination: MovieResultView(movie: movie)) {
+              Text(movie.title)
+            }
           }
         }
       }

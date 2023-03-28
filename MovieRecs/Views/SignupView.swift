@@ -13,7 +13,7 @@ struct SignUpView: View {
   @State var userName: String = ""
   @State var password: String = ""
   @State var email: String = ""
-    @ObservedObject var flow = AppFlow()
+  @ObservedObject var flow = AppFlow()
   var body: some View {
     NavigationView{
       ZStack{
@@ -27,15 +27,20 @@ struct SignUpView: View {
           }
           
           VStack(alignment: .leading){
-            Text("Password").foregroundColor(Color.white)
-            TextField("", text: $password).foregroundColor(Color.white).padding().frame(width: 300, height: 50).background(Color("TextFieldBackground")).cornerRadius(10)
-          }
-          VStack(alignment: .leading){
             Text("Email").foregroundColor(Color.white)
             TextField("", text: $email).foregroundColor(Color.white).padding().frame(width: 300, height: 50).background(Color("TextFieldBackground")).cornerRadius(10)
           }
           
-            Button{register();flow.loggedIn = true} label:{
+          VStack(alignment: .leading){
+            Text("Password").foregroundColor(Color.white)
+            SecureField("", text: $password).foregroundColor(Color.white).padding().frame(width: 300, height: 50).background(Color("TextFieldBackground")).cornerRadius(10)
+          }
+          
+          
+          Button(action:{
+            
+            flow.loggedIn = register()})
+          {
             
             Text("SIGN UP").frame(width: 300, height: 60).foregroundColor(Color.white).font(.title).background(LinearGradient(gradient: Gradient(colors: [.purple, .red]), startPoint: .leading, endPoint: .trailing).cornerRadius(40)
             )
@@ -43,9 +48,9 @@ struct SignUpView: View {
           
           HStack{
             Text("Already have an account?").foregroundColor(Color.gray)
-              Button(action: {
-                  flow.hasAccount = true
-              }) {
+            Button(action: {
+              flow.hasAccount = true
+            }) {
               Text("SIGN IN").foregroundColor(Color.red)
             }
           }
@@ -54,14 +59,17 @@ struct SignUpView: View {
       }
     }
   }
-    func register() {
-        Auth.auth().createUser(withEmail: self.email, password: self.password) { result, error in
-            if error != nil {
-                print(error!.localizedDescription)
-            }
-            
-        }
+  func register() -> Bool{
+    var successfulRegistration = true
+    Auth.auth().createUser(withEmail: self.email, password: self.password) { result, error in
+      if error != nil {
+        successfulRegistration = false
+        print(error!.localizedDescription)
+      }
+      
     }
+    return successfulRegistration
+  }
 }
 
 

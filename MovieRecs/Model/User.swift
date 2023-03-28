@@ -9,10 +9,10 @@ import Foundation
 
 class User {
     
-    let email: String
-    let username: String
-    let password: String
-    let movies: [Movie]
+    var email: String
+    var username: String
+    var password: String
+    var movies: [Movie]
   
   
   

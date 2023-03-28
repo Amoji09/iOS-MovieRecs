@@ -12,9 +12,9 @@ import Firebase
 struct SignInView: View {
   @State var email: String = ""
   @State var password: String = ""
-    @State var showErorrMessege = false
+  @State var showErorrMessege = false
   @ObservedObject var flow = AppFlow()
-    
+  
   var body: some View {
     NavigationView{
       ZStack{
@@ -29,10 +29,12 @@ struct SignInView: View {
           
           VStack(alignment: .leading){
             Text("Password").foregroundColor(Color.white)
-            TextField("", text: $password).foregroundColor(Color.white).padding().frame(width: 300, height: 50).background(Color("TextFieldBackground")).cornerRadius(10)
+            SecureField("", text: $password).foregroundColor(Color.white).padding().frame(width: 300, height: 50).background(Color("TextFieldBackground")).cornerRadius(10)
           }
           
-            Button{login();flow.loggedIn = true} label:{
+          Button(action:{
+            login()
+          }){
             
             Text("LOGIN").frame(width: 300, height: 60).foregroundColor(Color.white).font(.title).background(LinearGradient(gradient: Gradient(colors: [.purple, .red]), startPoint: .leading, endPoint: .trailing).cornerRadius(40)
             )
@@ -40,17 +42,17 @@ struct SignInView: View {
           
           HStack{
             Text("Don't have an account?").foregroundColor(Color.gray)
-              Button(action: {
-                  //if the textfield is empty
-                  //prints out error messege
-                  if(self.email == "") {
-                      showErorrMessege = true
-                  }
-                  if(self.password == "") {
-                      showErorrMessege = true
-                  }
-                  flow.hasAccount = false 
-              }) {
+            Button(action: {
+              //if the textfield is empty
+              //prints out error messege
+              if(self.email == "") {
+                showErorrMessege = true
+              }
+              if(self.password == "") {
+                showErorrMessege = true
+              }
+              flow.hasAccount = false
+            }) {
               Text("SIGN UP").foregroundColor(Color.red)
             }
           }
@@ -59,12 +61,17 @@ struct SignInView: View {
       }
     }
   }
-    func login() {
-        Auth.auth().signIn(withEmail: self.email, password: self.password) { result, error in
-        if error != nil {
-            print(error!.localizedDescription)
-        }
-        }
+  func login(){
+    Auth.auth().signIn(withEmail: self.email, password: self.password) { result, error in
+      if error != nil {
+        print(error!.localizedDescription)
+      }
+      else {
+        flow.loggedIn = true
+        flow.user.username = result?.user.displayName ?? "Default"
+        flow.user.email = result?.user.email ?? "Default"
+      }
     }
+  }
 }
 
