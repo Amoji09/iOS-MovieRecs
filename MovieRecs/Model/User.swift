@@ -12,7 +12,7 @@ class User {
     var email: String
     var username: String
     var password: String
-  var movies: [String:[TMDBMovie]]
+    var movies: [String:[TMDBMovie]]
   
     func addMovie(tier: String, movie: TMDBMovie) {
           // go into the movies dictionary

@@ -14,6 +14,7 @@ struct SignUpView: View {
   @State var password: String = ""
   @State var email: String = ""
   @ObservedObject var flow = AppFlow()
+  @ObservedObject var db = Database()
   var body: some View {
     NavigationView{
       ZStack{
@@ -65,6 +66,15 @@ struct SignUpView: View {
       if error != nil {
         successfulRegistration = false
         print(error!.localizedDescription)
+      } else {
+          db.addUser(userID: result?.user.uid ?? "error", email: self.email, password: self.password, username: self.userName)
+          let UID:String?
+          UID = Auth.auth().currentUser?.uid
+          print(db.getUser(userID:UID ?? "none"))
+          flow.user = User(email: self.email, username: self.userName, password: self.password, movies: [:])
+          print("User info \(flow.user)")
+//          flow.user = currUser
+//          print(flow.user)
       }
       
     }
