@@ -47,7 +47,7 @@ struct UserProfile: View {
                 Text("Email:").font(.title2).foregroundColor(Color.white)
                 Spacer()
                 Text(flow.user.email).font(.title2).foregroundColor(Color.white)
-              }.padding(.bottom, -10)
+              }.padding()
                 
                 
                 Spacer()

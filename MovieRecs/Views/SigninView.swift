@@ -13,8 +13,8 @@ struct SignInView: View {
   @State var email: String = ""
   @State var password: String = ""
   @State var showErorrMessege = false
-  @ObservedObject var flow = AppFlow()
-  @ObservedObject var db = Database()
+    @ObservedObject var flow : AppFlow
+  
   
   var body: some View {
     NavigationView{
@@ -70,14 +70,21 @@ struct SignInView: View {
       }
       else {
           
-          print("Sign in result \(result)")
+          print("Sign in result \(result!)")
         flow.loggedIn = true
-//        flow.user.username = result?.user.username ?? "Default"
+//          flow.user.username = result?.username ?? "Default"
 //        flow.user.email = result?.user.email ?? "Default"
-//          flow.user.password = result?.user.password ?? "Default"
-//          let UID:String?
+//        flow.user.password = result?.user.password ?? "Default"
+          let newUser = result!.user
+          let UID:String?
 //          UID = Auth.auth().currentUser?.uid
-//          flow.user = db.getUser(userID: UID)
+          UID = newUser.uid
+          print("sign in uid \(UID!)")
+          let db = Database(flow:flow)
+          db.getMovies(userID: UID!)
+          print("Final movies:  \(flow.user.movies)")
+          print("Final user:  \(flow.user)")
+                
           
       }
     }
