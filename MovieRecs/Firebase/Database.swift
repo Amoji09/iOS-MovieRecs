@@ -8,9 +8,10 @@
 import SwiftUI
 import FirebaseCore
 import FirebaseFirestore
+import FirebaseFirestoreSwift
 
-class Database : ObservableObject {
-    @Published var getUserOut = ""
+struct Database{
+    @ObservedObject var flow : AppFlow
     func addUser(userID: String, email: String, password: String, username: String) {
         let db = Firestore.firestore()
         db.collection("Users").document(userID).setData([
@@ -36,19 +37,35 @@ class Database : ObservableObject {
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
                 dataDescription = "\(document.data().map(String.init(describing:)) ?? "nil")"
-                var data = document.data()!
-                print(data)
-                print("Document data: \(dataDescription)")
-                print(data["email"]!)
+                let data = document.data()!
+                print("DATA: ", data["movies"])
+              print("DATA DESCRIPTION: \(dataDescription)   : END OF DESCRIPTION")
+//                print(data["email"]!)
                 user = User(email: data["email"]! as! String, username: data["username"]! as! String, password: data["password"]! as! String, movies: data["movies"]! as! [String : [TMDBMovie]])
-
                 
+//                print("USER OBJECT:   \(user)")
             } else {
                 print("Document does not exist")
 
             }
         }
         return user
+    }
+    
+    func getMovies(userID: String){
+        let db = Firestore.firestore()
+        let docRef = db.collection("Users").document(userID)
+        docRef.getDocument (as: User.self) { result in
+            switch result {
+            case .success(let user):
+                flow.user.movies = user.movies
+                flow.user.email = user.email
+                flow.user.password = user.password
+                flow.user.username = user.username
+            case .failure(let error):
+                print("Error: \(error)")
+            }
+        }
     }
     
 }

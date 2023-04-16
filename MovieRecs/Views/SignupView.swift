@@ -13,8 +13,8 @@ struct SignUpView: View {
   @State var userName: String = ""
   @State var password: String = ""
   @State var email: String = ""
-  @ObservedObject var flow = AppFlow()
-  @ObservedObject var db = Database()
+    @ObservedObject var flow : AppFlow
+  
   var body: some View {
     NavigationView{
       ZStack{
@@ -67,6 +67,7 @@ struct SignUpView: View {
         successfulRegistration = false
         print(error!.localizedDescription)
       } else {
+          var db = Database(flow: flow)
           db.addUser(userID: result?.user.uid ?? "error", email: self.email, password: self.password, username: self.userName)
           let UID:String?
           UID = Auth.auth().currentUser?.uid
