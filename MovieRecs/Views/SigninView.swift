@@ -14,6 +14,7 @@ struct SignInView: View {
   @State var password: String = ""
   @State var showErorrMessege = false
   @ObservedObject var flow = AppFlow()
+  @ObservedObject var db = Database()
   
   var body: some View {
     NavigationView{
@@ -24,12 +25,12 @@ struct SignInView: View {
           Text("Login").font(.largeTitle).foregroundColor(Color.white)
           VStack(alignment: .leading){
             Text("Email").foregroundColor(Color.white)
-            TextField("Your Username", text: $email).foregroundColor(Color.white).padding().frame(width: 300, height: 50).background(Color("TextFieldBackground")).cornerRadius(10)
+              TextField("Your Username", text: $email).foregroundColor(Color.white).padding().frame(width: 300, height: 50).background(Color("TextFieldBackground")).cornerRadius(10)
           }
           
           VStack(alignment: .leading){
             Text("Password").foregroundColor(Color.white)
-            SecureField("", text: $password).foregroundColor(Color.white).padding().frame(width: 300, height: 50).background(Color("TextFieldBackground")).cornerRadius(10)
+            SecureField("", text: $password).textCase(.lowercase).foregroundColor(Color.white).padding().frame(width: 300, height: 50).background(Color("TextFieldBackground")).cornerRadius(10)
           }
           
           Button(action:{
@@ -62,14 +63,22 @@ struct SignInView: View {
     }
   }
   func login(){
+      print(self.password)
     Auth.auth().signIn(withEmail: self.email, password: self.password) { result, error in
       if error != nil {
         print(error!.localizedDescription)
       }
       else {
+          
+          print("Sign in result \(result)")
         flow.loggedIn = true
-        flow.user.username = result?.user.displayName ?? "Default"
-        flow.user.email = result?.user.email ?? "Default"
+//        flow.user.username = result?.user.username ?? "Default"
+//        flow.user.email = result?.user.email ?? "Default"
+//          flow.user.password = result?.user.password ?? "Default"
+//          let UID:String?
+//          UID = Auth.auth().currentUser?.uid
+//          flow.user = db.getUser(userID: UID)
+          
       }
     }
   }
