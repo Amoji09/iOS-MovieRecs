@@ -40,6 +40,12 @@ struct SearchView: View {
   @State var query = ""
   @State var movieTitle = "Default"
   @State var movieResults : [TMDBMovie] = []
+    @State var popularMovies : [TMDBMovie] = []
+    let popularMovieColumns = [
+        GridItem(.flexible()),
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
   @ObservedObject var flow : AppFlow
   var body: some View{
     ZStack{
@@ -59,13 +65,39 @@ struct SearchView: View {
             Text("Search")
           }
         }.padding()
-        List{
-          ForEach(movieResults) { movie in
-            NavigationLink(destination: MovieResultView(movie: movie, flow: flow)) {
-              Text(movie.title).foregroundColor(Color.white)
-            }.listRowBackground(Color("TextFieldBackground"))
+          if (self.movieResults.count > 0) {
+              List{
+                  ForEach(movieResults) { movie in
+                      NavigationLink(destination: MovieResultView(movie: movie, flow: flow)) {
+                          Text(movie.title).foregroundColor(Color.white)
+                      }.listRowBackground(Color("TextFieldBackground"))
+                  }
+              }.background(Color("LoginBackground")).scrollContentBackground(.hidden)
+          } else {
+              LazyVGrid(columns: popularMovieColumns, spacing:20) {
+                  ForEach(popularMovies) { movie in
+                      NavigationLink(destination: MovieResultView(movie: movie, flow: flow)) {
+                          AsyncImage(url:URL(string: "https://image.tmdb.org/t/p/w500/https://image.tmdb.org/t/p/original/\(movie.poster_path ?? "null")")) {phase in
+                              switch phase{
+                              case .success(let image):
+                                  image
+                                      .resizable()
+                                      .scaledToFill()
+                              default:
+                                  Image(systemName: "photo")
+                              }
+                          }
+                              .frame(width:100, height: 175).cornerRadius(5)
+                      }
+                  }
+              }
           }
-        }.background(Color("LoginBackground")).scrollContentBackground(.hidden)
+      }
+      .onAppear {
+          api.fetchPopularFilms(completionHandler:
+                {(films) in
+              self.popularMovies = Array(films.prefix(9))
+          })
       }
     }}
 }
