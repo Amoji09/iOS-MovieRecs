@@ -13,7 +13,7 @@ struct SignInView: View {
   @State var email: String = ""
   @State var password: String = ""
   @State var showErorrMessege = false
-    @ObservedObject var flow : AppFlow
+    @ObservedObject var flow = AppFlow.shared
   
   
   var body: some View {
@@ -22,12 +22,12 @@ struct SignInView: View {
         Color("LoginBackground")
           .ignoresSafeArea()
         VStack(alignment: .leading, spacing: 60){
-          Text("Login").font(.largeTitle).foregroundColor(Color.white)
+          Text("Sign In").font(.largeTitle).foregroundColor(Color.white).bold()
           VStack(alignment: .leading){
             Text("Email").foregroundColor(Color.white)
-              TextField("Your Username", text: $email).foregroundColor(Color.white).padding().frame(width: 300, height: 50).background(Color("TextFieldBackground")).cornerRadius(10)
+              TextField("", text: $email).foregroundColor(Color.white).padding().frame(width: 300, height: 50).background(Color("TextFieldBackground")).cornerRadius(10)
           }
-          
+           
           VStack(alignment: .leading){
             Text("Password").foregroundColor(Color.white)
             SecureField("", text: $password).textCase(.lowercase).foregroundColor(Color.white).padding().frame(width: 300, height: 50).background(Color("TextFieldBackground")).cornerRadius(10)
@@ -37,8 +37,8 @@ struct SignInView: View {
             login()
           }){
             
-            Text("LOGIN").frame(width: 300, height: 60).foregroundColor(Color.white).font(.title).background(LinearGradient(gradient: Gradient(colors: [.purple, .red]), startPoint: .leading, endPoint: .trailing).cornerRadius(40)
-            )
+            Text("SIGN IN").frame(width: 300, height: 60).foregroundColor(Color.black).font(.title).bold().background(Color(red: 236/255, green: 33/255, blue: 71/255)
+            ).cornerRadius(20)
           }
           
           HStack{
@@ -54,7 +54,7 @@ struct SignInView: View {
               }
               flow.hasAccount = false
             }) {
-              Text("SIGN UP").foregroundColor(Color.red)
+              Text("Sign Up").foregroundColor(Color.red)
             }
           }
           
@@ -80,10 +80,11 @@ struct SignInView: View {
 //          UID = Auth.auth().currentUser?.uid
           UID = newUser.uid
           print("sign in uid \(UID!)")
+          flow.userID = UID!
           let db = Database(flow:flow)
           db.getMovies(userID: UID!)
-          print("Final movies:  \(flow.user.movies)")
-          print("Final user:  \(flow.user)")
+//          print("Final movies:  \(flow.user.movies)")
+//          print("Final user:  \(flow.user)")
                 
           
       }

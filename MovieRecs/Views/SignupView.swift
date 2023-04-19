@@ -13,7 +13,7 @@ struct SignUpView: View {
   @State var userName: String = ""
   @State var password: String = ""
   @State var email: String = ""
-    @ObservedObject var flow : AppFlow
+    @ObservedObject var flow = AppFlow.shared
   
   var body: some View {
     NavigationView{
@@ -21,10 +21,10 @@ struct SignUpView: View {
         Color("LoginBackground")
           .ignoresSafeArea()
         VStack(alignment: .leading, spacing: 60){
-          Text("Create Account").font(.largeTitle).foregroundColor(Color.white)
+          Text("Create Account").font(.largeTitle).bold().foregroundColor(Color.white)
           VStack(alignment: .leading){
             Text("Username").foregroundColor(Color.white)
-            TextField("Your Username", text: $userName).foregroundColor(Color.white).padding().frame(width: 300, height: 50).background(Color("TextFieldBackground")).cornerRadius(10)
+            TextField("", text: $userName).foregroundColor(Color.white).padding().frame(width: 300, height: 50).background(Color("TextFieldBackground")).cornerRadius(10)
           }
           
           VStack(alignment: .leading){
@@ -38,13 +38,12 @@ struct SignUpView: View {
           }
           
           
-          Button(action:{
-            
-            flow.loggedIn = register()})
+          Button(action:{register()})
           {
             
-            Text("SIGN UP").frame(width: 300, height: 60).foregroundColor(Color.white).font(.title).background(LinearGradient(gradient: Gradient(colors: [.purple, .red]), startPoint: .leading, endPoint: .trailing).cornerRadius(40)
-            )
+            Text("SIGN UP").frame(width: 300, height: 60).foregroundColor(Color.black).font(.title).bold().background(Color(red: 236/255, green: 33/255, blue: 71/255)
+            ).cornerRadius(20)
+            
           }
           
           HStack{
@@ -60,8 +59,8 @@ struct SignUpView: View {
       }
     }
   }
-  func register() -> Bool{
-    var successfulRegistration = true
+  func register(){
+    var successfulRegistration = false
     Auth.auth().createUser(withEmail: self.email, password: self.password) { result, error in
       if error != nil {
         successfulRegistration = false
@@ -70,16 +69,18 @@ struct SignUpView: View {
           var db = Database(flow: flow)
           db.addUser(userID: result?.user.uid ?? "error", email: self.email, password: self.password, username: self.userName)
           let UID:String?
+        
           UID = Auth.auth().currentUser?.uid
+          flow.userID = UID!
           print(db.getUser(userID:UID ?? "none"))
-          flow.user = User(email: self.email, username: self.userName, password: self.password, movies: [:])
+          flow.user = User(email: self.email, username: self.userName, movies: [:])
           print("User info \(flow.user)")
 //          flow.user = currUser
 //          print(flow.user)
+        flow.loggedIn = true
       }
       
     }
-    return successfulRegistration
   }
 }
 
