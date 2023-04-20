@@ -25,9 +25,14 @@ struct MainView : View {
       TierListView(flow: flow).tabItem{
         Label("Tiers", systemImage: "house")
       }
+      
+      RecommendationsView().tabItem {
+        Label("Recommendations", systemImage: "popcorn.fill")
+      }
       SearchView(flow: flow).tabItem{
         Label("Search", systemImage: "magnifyingglass")
       }
+      
       UserProfile(flow : flow).tabItem{
         Label("User", systemImage: "person.fill")
         

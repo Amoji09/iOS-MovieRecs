@@ -47,6 +47,7 @@ struct TierView: View {
       
       RoundedRectangle(cornerRadius : 5).fill(Color.black).frame(width: 300, height: 100).overlay(ScrollView(.horizontal){HStack{
         ForEach(flow.user.movies[tierType] ?? [] ) { movie in
+          NavigationLink(destination: MovieResultView(preexisting: true, movie: movie), label: {
           AsyncImage(url:URL(string: "https://image.tmdb.org/t/p/w500/https://image.tmdb.org/t/p/original/\(movie.poster_path ?? "null")")) {phase in
             switch phase{
             case .success(let image):
@@ -58,7 +59,8 @@ struct TierView: View {
             }
           }
           .frame(width:95, height: 95).cornerRadius(5)
-        }
+        })
+                         }
       }
       }
       )

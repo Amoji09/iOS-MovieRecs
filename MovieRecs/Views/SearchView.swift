@@ -25,6 +25,7 @@ struct SearchView: View {
         Color("LoginBackground")
           .ignoresSafeArea()
         VStack{
+          Spacer()
           
           HStack{
             TextField("Movie Title", text: $query).foregroundColor(Color.white).onSubmit {

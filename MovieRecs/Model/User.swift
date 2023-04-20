@@ -40,6 +40,24 @@ class User : Codable{
     }
   }
   
+  func removeMovie(movie: TMDBMovie) {
+    // go into the movies dictionary
+    // append TMDBMovie to corresponding value field of dic by tier
+    //      print(tier)
+    //      print(movie)
+    //      print(movies
+    let tiers = ["S","A","B","C","D","F"]
+    for tier in tiers{
+      if let index = movies[tier]!.firstIndex(of: movie) {
+        movies[tier]!.remove(at: index)
+        print("\(movie) removed from the array!")
+        break
+      } else {
+        print("\(movie) not found in the array.")
+      }
+    }
+  }
+  
   
   init (email: String, username: String, movies: [String:[TMDBMovie]]) {
     self.email = email

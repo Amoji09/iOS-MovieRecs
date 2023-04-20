@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MovieResultView : View{
   @StateObject var api  = APIModel()
+  @State var preexisting = false
   let movie : TMDBMovie
   @State var cast : [TMDBCast] = []
   var db = Database()
@@ -94,6 +95,16 @@ struct MovieResultView : View{
                 .frame(width: 40, height: 40)
                 .overlay(Text("F").foregroundColor(Color.black))
             }
+          if(preexisting) {
+            Button(action:{flow.user.removeMovie(movie: movie)
+              db.updateUser()
+              flow.objectWillChange.send()}){
+                RoundedRectangle(cornerRadius: 2)
+                  .fill(Color.gray)
+                  .frame(width: 40, height: 40)
+                  .overlay(Image(systemName: "trash").foregroundColor(Color.black))
+              }
+          }
         }.padding()
       }
     }.onAppear {

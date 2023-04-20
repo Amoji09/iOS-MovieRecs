@@ -46,9 +46,9 @@ class APIModel: ObservableObject {
     task.resume()
   }
   
-  func fetchRecs(movies: [String: [TMDBMovie]], completionHandler: @escaping ([String: [TMDBMovie]]) -> Void) {
+  func fetchRecs(movies: [String: [TMDBMovie]], completionHandler: @escaping ([TMDBMovie]) -> Void) {
         // dict to hold all recommendations
-        var recommendations: [String: [TMDBMovie]] = [:]
+        var recommendations: [TMDBMovie] = []
         // loop through users movies
         for (key, value) in movies {
             // make sure good movies
@@ -71,25 +71,19 @@ class APIModel: ObservableObject {
                                 let decodedResponse = try JSONDecoder().decode(TMDBResponse.self, from: data)
                                 //make sure this is a valid request
                                 if let firstMovie = decodedResponse.results.first {
-                                    // check if the key exists in recs
-                                    if recommendations[key] == nil {
-                                        //if its not in dictionary, create it with firstMovie
-                                        recommendations[key] = [firstMovie]
-                                    } else {
-                                        // keep adding the first rec response for each movie in that value
-                                       recommendations[key]!.append(firstMovie)
+                                  for movie in Array(decodedResponse.results.prefix(10)) {
+                                    if !recommendations.contains(movie) {
+                                      recommendations.append(movie)
                                     }
+                                  }
+//                                  recommendations.append(contentsOf: decodedResponse.results)
                                 }
                             } catch {
                                 print("error: ", error)
                             }
                         }
                         // finish it
-                        if recommendations.keys.sorted() == ["A", "B", "S"] {
-                            print("these are the recs")
-                            print(recommendations)
                             completionHandler(recommendations)
-                        }
                     }
                     task.resume()
                 }
@@ -157,7 +151,7 @@ struct TMDBResponse : Codable {
   let total_results : Int
 }
 
-struct TMDBMovie : Codable, Identifiable, Equatable {
+struct TMDBMovie : Codable, Identifiable, Equatable, Hashable {
   let adult: Bool
   let backdrop_path: String?
   let genre_ids: [Int]
