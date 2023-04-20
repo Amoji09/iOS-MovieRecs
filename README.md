@@ -1,2 +1,2 @@
 # iOS-MovieRecs
-Movie Tier List Maker
+Smart Recommendations Movie Tier List Maker based on IMDB API
